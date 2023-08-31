@@ -32,3 +32,29 @@ func solution(_ s: String) -> String {
 2. 만약 문자열이 한 번 대문자로 바뀌면 flag를 false로 해줘서 나머지 문자열은 그냥 통과시킨다.
 3. 빈문자열(띄어쓰기)가 오면 flag를 true로 바꿔준다.
 4. String 이외의 정수같은 녀석들은 전부 마지막 else문을 통과시켜준다
+
+#
+
+### 02. 최솟값 만들기
+
+&nbsp;&nbsp;&nbsp;&nbsp;<img src="image/2.png"><br/>
+
+```Swift
+import Foundation
+
+func solution(_ A:[Int], _ B:[Int]) -> Int
+{
+    let sortedA = A.sorted()
+    let sortedB = B.sorted(by: >)
+    
+    return zip(sortedA, sortedB).map(*).reduce(0, +)
+}
+```
+
+#
+
+### 03. 
+
+1. 곱한수의 최솟값을 만들기 위해서는 기본적으로 가장 작은수와 큰수를 곱해주어야한다.
+2. A배열은 오름차순으로, B배열은 내림차순으로 정리해준뒤 곱해서 더해주면 되는 부분이다.
+3. 코드의 간결함을 위해 고차함수를 사용해보았디.
