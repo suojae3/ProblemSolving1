@@ -54,3 +54,67 @@ func solution(_ A:[Int], _ B:[Int]) -> Int
 1. 곱한수의 최솟값을 만들기 위해서는 기본적으로 가장 작은수와 큰수를 곱해주어야한다.
 2. A배열은 오름차순으로, B배열은 내림차순으로 정리해준뒤 곱해서 더해주면 되는 부분이다.
 3. 코드의 간결함을 위해 고차함수를 사용해보았디.
+
+#
+
+### 03. 올바른 괄호
+
+```Swift
+import Foundation
+
+func solution(_ s:String) -> Bool
+{
+    var ac = 0
+    
+    guard s.first == "(" else { return false }    
+    for i in s {
+        if i == "(" {
+            ac += 1
+        } else {
+            ac -= 1
+             if ac < 0 {
+                return false
+            }
+        }  
+    }
+    
+    if ac == 0 {
+        return true
+    } 
+    
+    return false
+}
+```
+
+1. 처음에 )가 먼저오면 false를 리턴해준다
+2. ( 이 나오면 ac +=1 을 하고 )이 나오면 ac -= 1 을 한다
+3. 만약 중간에 ac가 음수가 되면 바로 false를 리턴한다
+4. 마지막에 괄호가 제대로 닫혔는지 ac == 0인지 확인해주고 맞다면 true 리턴한다
+
+#
+
+#### 조금 더 개선된 답안 (스택 이용)
+
+``` swift
+import Foundation
+
+func solution(_ s:String) -> Bool
+{
+    var stack: [Character] = []
+
+    for char in s {
+        if char == "(" {
+            stack.append(char)
+        } else if char == ")" {
+            if stack.isEmpty {
+                return false
+            }
+            stack.removeLast()
+        }
+    }
+
+    return stack.isEmpty
+}
+```
+위의 방법과 비슷하지만 딕셔너리를 통해 스택구조로 문제를 다시 풀어 보았다
+   
