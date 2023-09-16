@@ -59,7 +59,7 @@ func solution(_ A:[Int], _ B:[Int]) -> Int
 
 ### 03. 올바른 괄호
 
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="image/3.png"><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<img src="image/4.png"><br/>
 
 ```Swift
 import Foundation
