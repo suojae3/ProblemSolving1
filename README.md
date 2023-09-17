@@ -119,4 +119,37 @@ func solution(_ s:String) -> Bool
 }
 ```
 위의 방법과 비슷하지만 딕셔너리를 통해 스택구조로 문제를 다시 풀어 보았다
-   
+
+#
+
+### 04. 이진 변환 반복하기
+
+&nbsp;&nbsp;&nbsp;&nbsp;<img src="image/5.png"><br/>
+
+```Swift
+import Foundation
+
+func solution(_ s:String) -> [Int] {
+    
+    var zeroCount = 0
+    var radixTime = 0
+    var input = s
+    
+    while input != "1" {
+
+        zeroCount += input.filter { $0 == "0" }.count
+        let inputFilterValue = input.filter { $0 == "1"}
+        let countOnes = inputFilterValue.count
+
+        input = String(countOnes, radix: 2)
+        radixTime += 1
+    }
+
+    return [radixTime, zeroCount]
+}
+```
+
+1. 입력값에서 0을 없애고 이진수로 바꾼 뒤 0이 생기면 다시 빼주고 이진법으로 바꿔주는 문제
+2. 이 과정에서 빼버린 0의 개수와 이진법 전환 횟수를 리턴해주는 부분
+3. while문을 통해 1이 될때까지 돌려준다
+4. 돌릴 때마다 filter함수를 이용해 0의 개수를 더해주고 이진법 카운트를 하나씩 올려준다
