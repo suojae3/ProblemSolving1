@@ -153,3 +153,55 @@ func solution(_ s:String) -> [Int] {
 2. 이 과정에서 빼버린 0의 개수와 이진법 전환 횟수를 리턴해주는 부분
 3. while문을 통해 1이 될때까지 돌려준다
 4. 돌릴 때마다 filter함수를 이용해 0의 개수를 더해주고 이진법 카운트를 하나씩 올려준다
+
+#
+
+### 05. 다음 큰 숫자
+
+&nbsp;&nbsp;&nbsp;&nbsp;<img src="image/6.png"><br/>
+
+```Swift 
+import Foundation
+
+func solution(_ n: Int) -> Int {
+    var answer = n
+    let countN = String(n, radix: 2).filter { $0 == "1" }.count  
+    while true {
+        answer += 1
+        let radix = String(answer, radix: 2)
+        let countB = radix.filter { $0 == "1" }.count  
+        if countN == countB {
+            return answer
+        }
+    }
+}
+```
+
+1. 3가지 조건에 맞는 수가 나올 때까지 While문으로 무한반복 돌려준다.
+2. 이때 filter 함수와 count를 쓰려면 String 자료형이 필요하다는 것을 주의
+
+#
+
+### 06. 피보나치 수
+
+&nbsp;&nbsp;&nbsp;&nbsp;<img src="image/7.png"><br/>
+
+```Swift
+func solution(_ n: Int) -> Int {
+    if n <= 1 {
+        return n
+    }
+
+    var fib = [0, 1]
+    for i in 2...n {
+        let nextFib = (fib[0] + fib[1]) % 1234567
+        fib[0] = fib[1]
+        fib[1] = nextFib
+    }
+
+    return fib[1]
+}
+```
+
+1. 푸는 것보다 문제를 이해하는게 어려웠다... ^^;;
+2. 문제 이해가 안갈 때는 문제를 번호 단위로 나눠서 나열해보자
