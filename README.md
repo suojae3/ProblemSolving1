@@ -188,9 +188,6 @@ func solution(_ n: Int) -> Int {
 
 ```Swift
 func solution(_ n: Int) -> Int {
-    if n <= 1 {
-        return n
-    }
 
     var fib = [0, 1]
     for i in 2...n {
