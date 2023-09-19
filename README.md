@@ -228,6 +228,28 @@ func solution(_ s:String) -> Int{
 }
 ```
 
+#
+
+### 08. 카펫
+
+&nbsp;&nbsp;&nbsp;&nbsp;<img src="image/9.png"><br/>
+
+```Swift
+import Foundation
+
+func solution(_ brown:Int, _ yellow:Int) -> [Int] {
+    
+    for yellowHeight in 1...yellow {
+        guard yellow % yellowHeight == 0 else { continue }
+        var yellowWidth = yellow/yellowHeight
+        
+        if (yellowHeight+2) * (yellowWidth+2) == brown + yellow {
+            return [yellowHeight+2, yellowWidth+2].sorted(by: >)
+        }
+    }
+    return [-1]
+}
+```
 
 
 
