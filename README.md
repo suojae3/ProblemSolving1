@@ -202,3 +202,34 @@ func solution(_ n: Int) -> Int {
 
 1. 푸는 것보다 문제를 이해하는게 어려웠다... ^^;;
 2. 문제 이해가 안갈 때는 문제를 번호 단위로 나눠서 나열해보자
+
+#
+
+### 07. 짝지어 제거하기
+
+&nbsp;&nbsp;&nbsp;&nbsp;<img src="image/8.png"><br/>
+
+```swift
+import Foundation
+
+func solution(_ s:String) -> Int{
+
+    var stack: [Character] = []
+    
+    for char in s {
+        if let last = stack.last, last == char {
+            stack.removeLast() 
+        } else {
+            stack.append(char)
+        }
+    }
+    
+    return stack.isEmpty ? 1 : 0
+}
+```
+
+
+
+
+
+
